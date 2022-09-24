@@ -1,0 +1,11 @@
+* {
+    margin: 0;
+    padding: 0;
+}
+
+div {
+    width: 100px;
+    height: 100Px;
+    margin: 10px;
+    border: 1px solid black;
+}
