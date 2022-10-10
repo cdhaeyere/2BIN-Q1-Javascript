@@ -1,0 +1,36 @@
+### Read all pizzas with File variable
+GET http://localhost:3000/pizzas
+
+### Read all pizzas sorted by title (ascending)
+GET http://localhost:3000/pizzas/?order=+title
+
+### Read all pizzas sorted by title (descending)
+GET http://localhost:3000/pizzas/?order=-title
+
+### Create a pizza
+POST http://localhost:3000/pizzas
+Content-Type: application/json
+
+{
+  "title":"Magic Green",
+  "content":"Epinards, Brocolis, Olives vertes, Basilic"
+}
+
+### Create a pizza which lacks a property
+POST http://localhost:3000/pizzas
+Content-Type: application/json
+
+{
+  "content":"Epinards, Brocolis, Olives vertes, Basilic"
+}
+
+### Delete pizza identified by 2
+DELETE http://localhost:3000/pizzas/2
+
+### Update the pizza identified by 6
+PATCH {{baseUrl}}/pizzas/6
+Content-Type: application/json
+
+{
+  "title":"Magic Green 2"
+}
