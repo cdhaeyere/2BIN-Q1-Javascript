@@ -27,7 +27,7 @@ const FILMS = [
 
 router.get('/', function(req, res, next) {
     if (req.query['minimum-duration']) {
-        const minDuration = parseInt(req.query['minimum-duration']);
+        const minDuration = parseInt(req.query['minimum-duration'], 10);
         res.json(FILMS.filter(film => film.duration >= minDuration));
     }
     res.json(FILMS);
