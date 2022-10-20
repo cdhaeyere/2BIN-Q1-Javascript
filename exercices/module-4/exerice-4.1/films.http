@@ -9,9 +9,25 @@ GET http://localhost:3000/films/1
 
 ### Create a new film
 POST http://localhost:3000/films
+Content-Type: application/json
+
+{
+  "title": "The Godfather",
+  "duration": 175,
+  "budget": 6000000,
+  "link": "https://youtube.com"
+}
 
 ### Delete a film by id
-DELETE http://localhost:3000/films/1
+DELETE http://localhost:3000/films/5
 
 ### Patch a film by id
 PATCH http://localhost:3000/films/1
+Content-Type: application/json
+
+{
+  "title": "The Godfather",
+  "duration": 175,
+  "budget": 6000000,
+  "link": "https://youtube.com/the-godfather"
+}
