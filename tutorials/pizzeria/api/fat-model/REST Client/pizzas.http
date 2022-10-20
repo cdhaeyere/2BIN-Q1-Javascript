@@ -1,23 +1,22 @@
 ######### NORMAL OPERATION  ###########
 
 ### Read all pizzas
-GET http://localhost:3000/pizzas
+GET http://localhost:3000/films
 
 ### Read all pizzas with File variable
-@baseUrl = http://localhost:3000
-GET {{baseUrl}}/pizzas
+GET http://localhost:3000/films
 
 ### Read all pizzas sorted by title (ascending)
-GET {{baseUrl}}/pizzas/?order=+title
+GET http://localhost:3000/films/?minimum=+title
 
 ### Read all pizzas sorted by title (descending)
-GET {{baseUrl}}/pizzas/?order=-title
+GET http://localhost:3000/pizzas/?order=-title
 
 ### Read pizza identified by 2
-GET {{baseUrl}}/pizzas/2
+GET http://localhost:3000/pizzas/2
 
 ### Create a pizza
-POST {{baseUrl}}/pizzas
+POST http://localhost:3000/pizzas
 Content-Type: application/json
 
 {
@@ -26,10 +25,10 @@ Content-Type: application/json
 }
 
 ### Delete pizza identified by 2
-DELETE {{baseUrl}}/pizzas/2
+DELETE http://localhost:3000/pizzas/2
 
 ### Update the pizza identified by 6
-PATCH {{baseUrl}}/pizzas/6
+PATCH http://localhost:3000/pizzas/6
 Content-Type: application/json
 
 {
@@ -42,10 +41,10 @@ Content-Type: application/json
 ######### ERROR OPERATION  ###########
 
 ### Read pizza which does not exists
-GET {{baseUrl}}/pizzas/100
+GET http://localhost:3000/pizzas/100
 
 ### Create a pizza which lacks a property
-POST {{baseUrl}}/pizzas
+POST http://localhost:3000/pizzas
 Content-Type: application/json
 
 {
@@ -53,7 +52,7 @@ Content-Type: application/json
 }
 
 ### Create a pizza without info for a property
-POST {{baseUrl}}/pizzas
+POST http://localhost:3000/pizzas
 Content-Type: application/json
 
 {
@@ -62,7 +61,7 @@ Content-Type: application/json
 }
 
 ### Update for a pizza which does not exist
-PUT {{baseUrl}}/pizzas/200
+PUT http://localhost:3000/pizzas/200
 Content-Type: application/json
 
 {
@@ -70,7 +69,7 @@ Content-Type: application/json
 }
 
 ### Update for a pizza which does not provide any info for a property
-PUT {{baseUrl}}/pizzas/1
+PUT http://localhost:3000/pizzas/1
 Content-Type: application/json
 
 {

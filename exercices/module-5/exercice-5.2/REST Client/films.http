@@ -1,0 +1,33 @@
+### Read all films
+GET http://localhost:3000/films
+
+### Read all films above a certain duration
+GET http://localhost:3000/films?minimum-duration=120
+
+### Get film identified by id
+GET http://localhost:3000/films/1
+
+### Create a new film
+POST http://localhost:3000/films
+Content-Type: application/json
+
+{
+  "title": "The Godfather",
+  "duration": 175,
+  "budget": 6000000,
+  "link": "https://youtube.com"
+}
+
+### Delete a film by id
+DELETE http://localhost:3000/films/5
+
+### Patch a film by id
+PATCH http://localhost:3000/films/1
+Content-Type: application/json
+
+{
+  "title": "The Godfather",
+  "duration": 175,
+  "budget": 6000000,
+  "link": "https://youtube.com/the-godfather"
+}
