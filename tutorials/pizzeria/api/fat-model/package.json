@@ -1,5 +1,5 @@
 {
-  "name": "basic-api-boilerplate",
+  "name": "restful-api-essentials-fat-model",
   "version": "0.0.0",
   "private": true,
   "scripts": {
@@ -24,7 +24,6 @@
   "devDependencies": {
     "eslint": "^8.19.0",
     "eslint-config-airbnb-base": "^15.0.0",
-    "eslint-config-prettier": "^8.5.0",
     "nodemon": "^2.0.19",
     "prettier-airbnb-config": "^1.0.0"
   },

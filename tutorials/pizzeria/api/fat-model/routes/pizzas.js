@@ -31,8 +31,7 @@ router.get('/:id', (req, res) => {
 // Create a pizza to be added to the menu.
 router.post('/', (req, res) => {
   const title = req?.body?.title?.length !== 0 ? req.body.title : undefined;
-  const content =
-      req?.body?.content?.length !== 0 ? req.body.content : undefined;
+  const content = req?.body?.content?.length !== 0 ? req.body.content : undefined;
 
   if (!title || !content) return res.sendStatus(400); // error code '400 Bad request'
 
