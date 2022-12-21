@@ -1,0 +1,26 @@
+### Create a place
+POST http://localhost:3000/places/create
+Content-Type: application/json
+
+{
+  "nom": "Place name",
+  "description": "Place description"
+}
+
+### Create a user
+POST http://localhost:3000/users/create
+Content-Type: application/json
+
+{
+  "nom": "User name",
+  "email": "User email"
+}
+
+### Like a place
+POST http://localhost:3000/users/addPlace
+Content-Type: application/json
+
+{
+  "userId": "1",
+  "placeId": "1"
+}
