@@ -1,4 +1,5 @@
 const path = require('node:path');
+const uuid = require('uuid');
 const { parse, serialize } = require('../utils/json');
 
 const jsonDbPath = path.join(__dirname, '/../data/places.json');
@@ -6,7 +7,7 @@ const jsonDbPath = path.join(__dirname, '/../data/places.json');
 function createOnePlace(place) {
   const places = parse(jsonDbPath, []);
   const newPlace = {
-    id: getNextId(),
+    uuid: uuid.v4(),
     nom: place.nom,
     description: place.description,
   };
@@ -15,19 +16,10 @@ function createOnePlace(place) {
   return newPlace;
 }
 
-function readOnePlace(id) {
+function readOnePlace(placeUuid) {
   const places = parse(jsonDbPath);
-  const place = places.find((p) => p.id === id);
+  const place = places?.find((p) => p.uuid === placeUuid);
   return place;
-}
-
-function getNextId() {
-  const places = parse(jsonDbPath);
-  const lastItemIndex = places?.length !== 0 ? places.length - 1 : undefined;
-  if (lastItemIndex === undefined) return 1;
-  const lastId = places[lastItemIndex]?.id;
-  const nextId = lastId + 1;
-  return nextId;
 }
 
 module.exports = {

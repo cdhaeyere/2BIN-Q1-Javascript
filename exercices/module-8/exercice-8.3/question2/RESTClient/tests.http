@@ -1,4 +1,5 @@
 ### Create a place
+# @name place
 POST http://localhost:3000/places/create
 Content-Type: application/json
 
@@ -8,6 +9,7 @@ Content-Type: application/json
 }
 
 ### Create a user
+# @name user
 POST http://localhost:3000/users/create
 Content-Type: application/json
 
@@ -21,6 +23,6 @@ POST http://localhost:3000/users/addPlace
 Content-Type: application/json
 
 {
-  "userId": "1",
-  "placeId": "1"
+  "userUuid": "{{user.response.body.uuid}}",
+  "placeUuid": "{{place.response.body.uuid}}"
 }

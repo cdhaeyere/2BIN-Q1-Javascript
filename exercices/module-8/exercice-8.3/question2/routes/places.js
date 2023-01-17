@@ -11,7 +11,7 @@ router.post('/create', (req, res) => {
 
   const newPlace = createOnePlace({ nom, description });
 
-  return res.status(201).json(newPlace.id);
+  return res.status(201).json({ uuid: newPlace.uuid });
 });
 
 module.exports = router;

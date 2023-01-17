@@ -1,18 +1,19 @@
 const path = require('node:path');
+const uuid = require('uuid');
 const { parse, serialize } = require('../utils/json');
 const { readOnePlace } = require('./places');
 
 const jsonDbPath = path.join(__dirname, '/../data/users.json');
 
-function readOneUser(id) {
+function readOneUser(userUuid) {
   const users = parse(jsonDbPath);
-  return users.find((u) => u.id === id);
+  return users?.find((u) => u.uuid === userUuid);
 }
 
 function createOneUser(user) {
   const places = parse(jsonDbPath, []);
   const newUser = {
-    id: getNextId(),
+    uuid: uuid.v4(),
     nom: user.nom,
     email: user.email,
     places: user.places,
@@ -22,22 +23,12 @@ function createOneUser(user) {
   return newUser;
 }
 
-function addUserPlace(userId, placeId) {
-  const user = readOneUser(userId);
-  console.log(`${user}addUserPlace`);
+function addUserPlace(userUuid, placeUuid) {
+  const user = readOneUser(userUuid);
   if (!user) return null;
-  user.places.push(readOnePlace(placeId));
+  user.places.push(readOnePlace(placeUuid));
   serialize(jsonDbPath, user);
   return user;
-}
-
-function getNextId() {
-  const users = parse(jsonDbPath);
-  const lastItemIndex = users?.length !== 0 ? users.length - 1 : undefined;
-  if (lastItemIndex === undefined) return 1;
-  const lastId = users[lastItemIndex]?.id;
-  const nextId = lastId + 1;
-  return nextId;
 }
 
 module.exports = {

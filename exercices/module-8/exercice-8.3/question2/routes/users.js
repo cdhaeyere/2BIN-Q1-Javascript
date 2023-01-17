@@ -12,23 +12,22 @@ router.post('/create', (req, res) => {
 
   const newUser = createOneUser({ nom, email, places: [] });
 
-  return res.status(201).json(newUser.id);
+  return res.status(201).json({ uuid: newUser.uuid });
 });
 
 router.post('/addPlace', (req, res) => {
-  const userId = req?.body?.userId;
-  const placeId = req?.body?.placeId;
+  const userUuid = req?.body?.userUuid;
+  const placeUuid = req?.body?.placeUuid;
 
-  if (!userId || !placeId) return res.status(400).json({ message: 'Missing required fields' });
+  if (!userUuid || !placeUuid) return res.status(400).json({ message: 'Missing required fields' });
 
-  if (readOneUser(parseInt(userId, 10)) === undefined) return res.status(404).json({ message: 'User not found' });
-  if (readOnePlace(parseInt(placeId, 10)) === undefined) return res.status(404).json({ message: 'Place not found' });
+  if (readOneUser(userUuid) === undefined) return res.status(404).json({ message: 'User not found' });
+  if (readOnePlace(placeUuid) === undefined) return res.status(404).json({ message: 'Place not found' });
 
-  const found = readOneUser(parseInt(userId, 10));
-  console.log(found);
-  if (found.places.includes(placeId)) return res.status(400).json({ message: 'User already has this place' });
+  const found = readOneUser(userUuid, 10);
+  if (found.places.includes(placeUuid)) return res.status(400).json({ message: 'User already has this place' });
 
-  const user = addUserPlace(parseInt(userId, 10), parseInt(placeId, 10));
+  const user = addUserPlace(userUuid, placeUuid, 10);
 
   return res.status(201).json(user);
 });
