@@ -1,0 +1,14 @@
+### Add trad
+POST http://localhost:3000/trad
+Content-Type: application/json
+
+{
+    "fr": "bonjour",
+    "en": "hello"
+}
+
+### Trad from fr
+GET http://localhost:3000/trad/fr?query=test
+
+### Trad from en
+GET http://localhost:3000/trad/en?query=helLO

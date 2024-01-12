@@ -1,0 +1,63 @@
+@baseUrl = http://localhost:3000
+
+### Enregistrer achats
+POST {{baseUrl}}/purchases
+Content-Type: application/json
+
+{
+    "user": "user1",
+    "idProduit": 1,
+    "quantite": 10
+}
+
+### Enregistrer achats sans user
+POST {{baseUrl}}/purchases
+Content-Type: application/json
+
+{
+    "user": "",
+    "idProduit": 1,
+    "quantite": 10
+}
+
+### Enregistrer achats sans idProduit
+POST {{baseUrl}}/purchases
+Content-Type: application/json
+
+{
+    "user": "user1",
+    "idProduit": "",
+    "quantite": 10
+}
+
+### Enregistrer achats sans quantite
+POST {{baseUrl}}/purchases
+Content-Type: application/json
+
+{
+    "user": "user1",
+    "idProduit": 1,
+    "quantite": ""
+}
+
+### Enregistrer achats avec quantité inférieure à 0
+POST {{baseUrl}}/purchases
+Content-Type: application/json
+
+{
+    "user": "user1",
+    "idProduit": 1,
+    "quantite": -1
+}
+
+### Récupérer l’utilisateur achetant le plus fréquemment un produit
+POST {{baseUrl}}/purchases/2
+
+### Récupérer l’utilisateur achetant le plus fréquemment un produit inexistant
+POST {{baseUrl}}/purchases/42
+
+### Récupérer le produit recommandé pour un utilisateur
+POST {{baseUrl}}/recommandations/user1
+
+### Récupérer le produit recommandé pour un utilisateur inexistant
+POST {{baseUrl}}/recommandations/user
